@@ -46,7 +46,7 @@ public class Kasa {
 		String line;
 		BufferedReader bReader = new BufferedReader(fileReader);
 		if (bReader1.readLine() == null) {
-			System.out.println("Bu b�l�m bo�");
+			System.out.println("Bu bolum bos");
 		}
 		bReader1.close();
 		double toplamMaliyet = 0;
@@ -65,7 +65,7 @@ public class Kasa {
 		String line;
 		BufferedReader bReader = new BufferedReader(fileReader);
 		if (bReader1.readLine() == null) {
-			System.out.println("Bu b�l�m bo�");
+			System.out.println("Bu bolum bos");
 		}
 		bReader1.close();
 		double toplamGelir = 0;
@@ -83,7 +83,7 @@ public class Kasa {
 		String line;
 		BufferedReader bReader = new BufferedReader(fileReader);
 		if (bReader1.readLine() == null) {
-			System.out.println("Bu b�l�m bo�");
+			System.out.println("Bu bolum bos");
 		}
 		bReader1.close();
 		double toplamGider = 0;
@@ -98,7 +98,7 @@ public class Kasa {
 	public void giderEkle() throws IOException {
 		System.out.print("Gider ismi girin:");
 		String giderIsmi = scan.next();
-		System.out.print("Gider fiyat� girin:");
+		System.out.print("Gider fiyati girin:");
 		Double giderFiyati = scan.nextDouble();
 		String donustur = String.valueOf(giderFiyati);
 		dosyaYazma("Gider.txt", donustur);
@@ -132,73 +132,73 @@ public class Kasa {
 
 		Menu menu = new Menu();
 
-		System.out.println("1: MAL�YET\n2: GEL�R\n3: G�DER\n4: G�DER EKLE\n5: RAPOR\n0: GER�");
-		System.out.print("--Yapmak istedi�iniz i�lemi se�iniz:");
+		System.out.println("1: MALİYET\n2: GELİR\n3: GİDER\n4: GİDER EKLE\n5: RAPOR\n0: GER�");
+		System.out.print("--Yapmak istediginiz islemi se�iniz:");
 
 		int islem = scan.nextInt();
 		switch (islem) {
 		case 1:
 			System.out.println("Toplam Maliyet= " + toplamMaliyet());
-			System.out.print("Geri gitmek i�in 0 giriniz:");
+			System.out.print("Geri gitmek icin 0 giriniz:");
 			int secim = scan.nextInt();
 			if (secim == 0) {
 				kasaKontrol();
 			} else {
-				System.out.println("Hatal� giri� yapt�n�z!");
+				System.out.println("Hatali giris yaptiniz!");
 			}
 			break;
 		case 2:
 			System.out.println("Toplam Gelir= " + (toplamGelir()));
 
-			System.out.print("Geri gitmek i�in 0 giriniz:");
+			System.out.print("Geri gitmek icin 0 giriniz:");
 			secim = scan.nextInt();
 			if (secim == 0) {
 				kasaKontrol();
 			} else {
-				System.out.println("Hatal� giri� yapt�n�z!");
+				System.out.println("Hatali giris yaptiniz!");
 			}
 			break;
 		case 3:
 			System.out.println("Toplam Gider= " + (toplamGider() + toplamMaliyet()));
-			System.out.print("Geri gitmek i�in 0 giriniz:");
+			System.out.print("Geri gitmek icin 0 giriniz:");
 			secim = scan.nextInt();
 			if (secim == 0) {
 				kasaKontrol();
 			} else {
-				System.out.println("Hatal� giri� yapt�n�z!");
+				System.out.println("Hatali giris yaptiniz!");
 			}
 			break;
 		case 4:
 			giderEkle();
-			System.out.print("Geri gitmek i�in 0 giriniz:");
+			System.out.print("Geri gitmek icin 0 giriniz:");
 			secim = scan.nextInt();
 			if (secim == 0) {
 				kasaKontrol();
 			} else {
-				System.out.println("Hatal� giri� yapt�n�z!");
+				System.out.println("Hatali giris yaptiniz!");
 			}
 			break;
 		case 5:
 			System.out.println("Toplam Gelirler= " + toplamGelir());
 			System.out.println("Toplam Giderler= " + (toplamMaliyet() + toplamGider()));
-			System.out.print("Detayl� g�rmek i�in 1'e bas�n: ");
+			System.out.print("Detayli gormek icin 1'e bas�n: ");
 			secim = scan.nextInt();
 			if (secim == 1) {
 				System.out.println("Detay= " +rapor(toplamGelir(), (toplamMaliyet() + toplamGider())));
 			}
-			System.out.print("Geri gitmek i�in 0 giriniz:");
+			System.out.print("Geri gitmek icin 0 giriniz:");
 			secim = scan.nextInt();
 			if (secim == 0) {
 				kasaKontrol();
 			} else {
-				System.out.println("Hatal� giri� yapt�n�z!");
+				System.out.println("Hatali giris yaptiniz!");
 			}
 			break;
 		case 0:
 			menu.Kontrol();
 			break;
 		default:
-			System.out.println("Hatal� se�im yapt�n�z!");
+			System.out.println("Hatali secim yaptiniz!");
 			break;
 		}
 	}
