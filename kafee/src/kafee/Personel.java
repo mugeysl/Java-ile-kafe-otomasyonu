@@ -59,12 +59,12 @@ public class Personel {
 		System.out.print("Ad Soyad giriniz: ");
 		String adSoyad = scan.next();
 
-		System.out.print("Maa� giriniz: ");
+		System.out.print("Maas giriniz: ");
 		int maas = scan.nextInt();
 
 		dosyaYazma("Gider.txt", String.valueOf(maas));
 		dosyaYazma("Personeller.txt",
-				adSoyad + " isimli personel " + maas + " TL maa�la i�e girdi.");
+				adSoyad + " isimli personel " + maas + " TL maasla ise girdi.");
 
 		dosyaOkuma("Personeller.txt");
 
@@ -104,7 +104,7 @@ public class Personel {
 			id++;
 		}
 
-		System.out.print("-Silmek istedi�iniz personel id'sini giriniz:");
+		System.out.print("-Silmek istediginiz personel id'sini giriniz:");
 		int personelId = scan.nextInt();
 		list.remove(personelId - 1);
 
@@ -169,7 +169,7 @@ public class Personel {
 				System.out.println(idd + ") " + a);
 				idd++;
 			}
-			System.out.print("Mesai eklemek istedi�iniz personel id'sini giriniz: ");
+			System.out.print("Mesai eklemek istediginiz personel id'sini giriniz: ");
 			int id = scan.nextInt();
 
 			String[] bolme2 = new String[8];
@@ -184,7 +184,7 @@ public class Personel {
 						new FileWriter("MesaiSaatleri.txt", true));
 				System.out.print("Mesai tarihi giriniz (gg-aa-yyyy): ");
 				String date = scan.next();
-				System.out.print("Ka� saat mesai alaca��n� giriniz: ");
+				System.out.print("Kac saat mesai alacagini giriniz: ");
 				int saat = scan.nextInt();
 				bWriter.write(ad[0] + " -----> " + date + " ==> " + saat + " saat ek mesai ald�.");
 				bWriter.newLine();
@@ -196,7 +196,7 @@ public class Personel {
 			}
 
 		} else {
-			System.out.println("Mevcut personeliniz bulunmamaktad�r.");
+			System.out.println("Mevcut personeliniz bulunmamaktadir.");
 		}
 	}
 
@@ -243,19 +243,19 @@ public class Personel {
 				System.out.println(idd + ") " + a);
 				idd++;
 			}
-			System.out.print("�demesini yapmak istedi�iniz kullan�c�n�n id'sini giriniz:");
+			System.out.print("Odemesini yapmak istediginiz kullanicinin id'sini giriniz:");
 			int personelId = scan.nextInt();
-			System.out.print("�demesi yap�lacak ay� giriniz (�rnek: Ocak): ");
+			System.out.print("Odemesi yapilacak ayi giriniz (Ornek: Ocak): ");
 			String ay = scan.next();
-			System.out.print("�denecek tutar� giriniz:");
+			System.out.print("Odenecek tutari giriniz:");
 			double odenecekTutar = scan.nextDouble();
-			System.out.println("�deme yap�ld�.");
+			System.out.println("Odeme yapildi.");
 
 			try {
 				BufferedWriter bWriter = new BufferedWriter(
 						new FileWriter("PersonelOdemeler.txt", true));
 				bWriter.write(personel[personelId - 1] + " isimli personele  " + ay
-						+ " ay�n�n �demesi yap�ld�. TUTAR--> " + odenecekTutar + " TL");
+						+ " ayinin odemesi yapildi. TUTAR--> " + odenecekTutar + " TL");
 				bWriter.newLine();
 				bWriter.close();
 			} catch (IOException e) {
@@ -266,10 +266,10 @@ public class Personel {
 			DateTimeFormatter gorunum = DateTimeFormatter.ofPattern("dd/MM/yyyy hh:mm");
 
 			dosyaYazma("log.txt", tarih.format(gorunum) + (personel[personelId - 1]) + " isimli personele  " + ay
-					+ " ay�n�n �demesi yap�ld�. TUTAR--> " + odenecekTutar + " TL");
+					+ " ayinin odemesi yapildi. TUTAR--> " + odenecekTutar + " TL");
 
 		} else {
-			System.out.println("Mevcut personeliniz bulunmamaktad�r.");
+			System.out.println("Mevcut personeliniz bulunmamaktadir.");
 		}
 	}
 
@@ -278,65 +278,65 @@ public class Personel {
 		Menu menu = new Menu();
 
 		System.out.println(
-				"1: ��E G�R��\n2: ��TEN �IKI�\n3: MESA� SAATLER�\n4: HFTALIK MESA� SAATLER�\n5: PERSONEL �DEME\n0 : GER�");
-		System.out.print("--Yapmak istedi�iniz i�lemi se�iniz:");
+				"1: ISE GIRIS\n2: ISTEN CIKIS\n3: MESAI SAATLERI\n4: HFTALIK MESAI SAATLERI\n5: PERSONEL ODEME\n0 : GERI");
+		System.out.print("--Yapmak istediginiz islemi seciniz:");
 		int islem = scan.nextInt();
 		switch (islem) {
 		case 1:
 			iseGiris();
-			System.out.print("Geri gitmek i�in 0 giriniz:");
+			System.out.print("Geri gitmek icin 0 giriniz:");
 			int secim = scan.nextInt();
 			if (secim == 0) {
 				personelKontrol();
 			} else {
-				System.out.println("Hatal� giri� yapt�n�z!");
+				System.out.println("Hatali giris yaptiniz!");
 			}
 			break;
 		case 2:
 			istenCikis();
-			System.out.print("Geri gitmek i�in 0 giriniz:");
+			System.out.print("Geri gitmek icin 0 giriniz:");
 			secim = scan.nextInt();
 			if (secim == 0) {
 				personelKontrol();
 			} else {
-				System.out.println("Hatal� giri� yapt�n�z!");
+				System.out.println("Hatali giris yaptiniz!");
 			}
 			break;
 		case 3:
 			mesaiSaatleri();
-			System.out.print("Geri gitmek i�in 0 giriniz:");
+			System.out.print("Geri gitmek icin 0 giriniz:");
 			secim = scan.nextInt();
 			if (secim == 0) {
 				personelKontrol();
 			} else {
-				System.out.println("Hatal� giri� yapt�n�z!");
+				System.out.println("Hatali giris yaptiniz!");
 			}
 			break;
 		case 4:
 			haftalikMesaiSaatleri();
-			System.out.print("Geri gitmek i�in 0 giriniz:");
+			System.out.print("Geri gitmek icin 0 giriniz:");
 			secim = scan.nextInt();
 			if (secim == 0) {
 				personelKontrol();
 			} else {
-				System.out.println("Hatal� giri� yapt�n�z!");
+				System.out.println("Hatali giris yaptiniz!");
 			}
 			break;
 		case 5:
 			personelOdeme();
-			System.out.print("Geri gitmek i�in 0 giriniz:");
+			System.out.print("Geri gitmek icin 0 giriniz:");
 			secim = scan.nextInt();
 			if (secim == 0) {
 				personelKontrol();
 			} else {
-				System.out.println("Hatal� giri� yapt�n�z!");
+				System.out.println("Hatali giris yaptiniz!");
 			}
 			break;
 		case 0:
 			menu.Kontrol();
 			break;
 		default:
-			System.out.println("Hatal� i�lem yapt�n�z!");
+			System.out.println("Hatali islem yaptiniz!");
 			break;
 		}
 	}
