@@ -11,9 +11,9 @@ public class Main {
 
 	public static void kullaniciGirisi() {
 		Scanner scan = new Scanner(System.in);
-		System.out.print("Kullanýcý adýný giriniz:");
+		System.out.print("Kullanici adinizi giriniz:");
 		admin = scan.next();
-		System.out.print("Þifrenizi giriniz:");
+		System.out.print("Sifrenizi giriniz:");
 		password = scan.next();
 	}
 
@@ -23,11 +23,11 @@ public class Main {
 
 		kullaniciGirisi();
 		if (kullaniciAdi.equals(admin) && sifre.equals(password)) {
-			System.out.println("Sisteme baþarýyla girildi!");
+			System.out.println("Sisteme basariyla girildi!");
 			menu.Kontrol();
 
 		} else {
-			System.out.println("Kullanýcý adý veya þifre yanlýþ!\nKontrol ederek tekrar deneyiniz.");
+			System.out.println("Kullanici adi veya sifre yanlis!\nKontrol ederek tekrar deneyiniz.");
 			kullaniciGirisi();
 		}
 	}
