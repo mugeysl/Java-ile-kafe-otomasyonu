@@ -52,7 +52,7 @@ public class Icecekler {
 			list.add(line);
 		}
 		bReader.close();
-		System.out.println("-----------------\n" + "    ��ECEKLER \n" + "-----------------");
+		System.out.println("-----------------\n" + "    ICECEKLER \n" + "-----------------");
 		int id = 1;
 		for (Object a : list) {
 			System.out.println(id + ") " + a);
@@ -65,15 +65,15 @@ public class Icecekler {
 		listeOlusturma();
 
 		System.out.println("--Eklemek istedi�iniz �r�n�n--");
-		System.out.print("Ad�:");
+		System.out.print("Adi:");
 		String icecekAdi = scan.next();
-		System.out.print("Fiyat�:");
+		System.out.print("Fiyati:");
 		double icecekFiyati = scan.nextDouble();
 		System.out.print("Maliyeti:");
 		double icecekMaliyeti = scan.nextDouble();
 		System.out.print("Kalorisi:");
 		double icecekKalorisi = scan.nextDouble();
-		System.out.println("�r�n eklendi.");
+		System.out.println("Urun eklendi.");
 		dosyaYazma("Icecekler.txt",
 				icecekAdi + " " + icecekFiyati + " TL " + icecekMaliyeti + " TL " + icecekKalorisi + " kalori");
 
@@ -101,7 +101,7 @@ public class Icecekler {
 		}
 		bufferedReader.close();
 
-		System.out.println("-----------------\n" + "    ��ECEKLER \n" + "-----------------");
+		System.out.println("-----------------\n" + "    ICECEKLER \n" + "-----------------");
 		int idd = 1;
 		for (Object a : list) {
 			System.out.println(idd + ") " + a);
@@ -117,7 +117,7 @@ public class Icecekler {
 		}
 		bWriter.close();
 
-		System.out.println("-----------------\n" + "    ��ECEKLER \n" + "-----------------");
+		System.out.println("-----------------\n" + "    ICECEKLER \n" + "-----------------");
 		// System.out.println(" ADI\t\tFIYATI\tKALORI\n"
 		// + " ---\t\t-------\t------");
 		idd = 1;
@@ -136,7 +136,7 @@ public class Icecekler {
 		LinkedList<Object> list = new LinkedList<>();
 
 		try {
-			System.out.println("-----------------\n" + "    ��ECEKLER \n" + "-----------------");
+			System.out.println("-----------------\n" + "    ICECEKLER \n" + "-----------------");
 			dosyaOkuma("Icecekler.txt");
 			FileReader fileReader = new FileReader("Icecekler.txt");
 			String line;
@@ -150,12 +150,12 @@ public class Icecekler {
 			e.printStackTrace();
 		}
 
-		System.out.print("G�ncellemek istedi�iniz �r�n�n id'sini giriniz:");
+		System.out.print("Guncellemek istediginiz urunun id'sini giriniz:");
 		int urunId = scan.nextInt();
-		System.out.println("--G�ncelledi�iniz �r�n�n--");
-		System.out.print("Ad�:");
+		System.out.println("--Guncellediginiz urunun--");
+		System.out.print("Adi:");
 		String ad = scan.next();
-		System.out.print("Fiyat�:");
+		System.out.print("Fiyati:");
 		double fiyat = scan.nextDouble();
 		System.out.print("Maliyeti:");
 		double maliyet = scan.nextDouble();
@@ -166,7 +166,7 @@ public class Icecekler {
 		eskiData[0] = list.get(urunId - 1).toString();
 		list.set(urunId - 1, ad + " " + fiyat + " TL " + maliyet + " TL " + kalori + " kalori");
 
-		System.out.println("-----------------\n" + "    ��ECEKLER \n" + "-----------------");
+		System.out.println("-----------------\n" + "    ICECEKLER \n" + "-----------------");
 		int id = 1;
 		for (Object a : list) {
 			System.out.println(id + ") " + a);
@@ -176,7 +176,7 @@ public class Icecekler {
 		SimpleDateFormat sekil = new SimpleDateFormat();
 		Date tarih = new Date();
 		dosyaYazma("log.txt", sekil.format(tarih) + " tarihinde " + eskiData[0] + " --> " + list.get(urunId - 1)
-				+ " seklinde g�ncellendi.");
+				+ " seklinde guncellendi.");
 		dosyaYazma("MenuLog.txt", sekil.format(tarih) + " tarihinde "
 				+ eskiData[0] + " --> " + list.get(urunId - 1) + " seklinde g�ncellendi.");
 
@@ -205,13 +205,13 @@ public class Icecekler {
 	public void iceceklerKontrol() throws IOException {
 		Menu menu = new Menu();
 
-		System.out.println("1: EKLE\n2: S�L\n3: G�NCELLE\n0: GER�");
-		System.out.print("--Yapmak istedi�iniz i�lemi se�iniz:");
+		System.out.println("1: EKLE\n2: SIL\n3: GUNCELLE\n0: GERI");
+		System.out.print("--Yapmak istediginiz islemi seciniz:");
 		int islem = scan.nextInt();
 		switch (islem) {
 		case 1:
 			ekle();
-			System.out.print("Geri gitmek i�in 0 giriniz:");
+			System.out.print("Geri gitmek icin 0 giriniz:");
 			int secim = scan.nextInt();
 			if (secim == 0) {
 				iceceklerKontrol();
@@ -219,10 +219,10 @@ public class Icecekler {
 			break;
 		case 2:
 			dosyaOkuma("Icecekler.txt");
-			System.out.print("-Silmek istedi�iniz �r�n�n id'sini giriniz:");
+			System.out.print("-Silmek istediginiz urunun id'sini giriniz:");
 			int id = scan.nextInt();
 			sil("Icecekler.txt", id);
-			System.out.print("Geri gitmek i�in 0 giriniz:");
+			System.out.print("Geri gitmek icin 0 giriniz:");
 			secim = scan.nextInt();
 			if (secim == 0) {
 				iceceklerKontrol();
@@ -230,7 +230,7 @@ public class Icecekler {
 			break;
 		case 3:
 			guncelle();
-			System.out.print("Geri gitmek i�in 0 giriniz:");
+			System.out.print("Geri gitmek icin 0 giriniz:");
 			secim = scan.nextInt();
 			if (secim == 0) {
 				iceceklerKontrol();
@@ -240,7 +240,7 @@ public class Icecekler {
 			menu.menuKontrol();
 			break;
 		default:
-			System.out.println("Hatal� se�im yapt�n�z!");
+			System.out.println("Hatali secim yaptiniz!");
 			break;
 		}
 	}
