@@ -333,7 +333,7 @@ public class Musteri {
 			menu.Kontrol();
 			break;
 		default:
-			System.out.println("Hatali giris yaptiniz!");
+			System.out.println("Hatali islem yaptiniz!");
 			break;
 		}
 	}
