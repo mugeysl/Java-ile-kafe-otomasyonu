@@ -99,8 +99,8 @@ public class Musteri {
 
 	public void masaEkleme() throws IOException {
 
-		System.out.println("--Eklemek istedi�iniz masa--");
-		System.out.print("Ad�:");
+		System.out.println("--Eklemek istediginiz masa--");
+		System.out.print("Adi:");
 		String masaAdi = scan.next();
 		dosyaYazma("Masalar.txt", masaAdi);
 
@@ -131,44 +131,44 @@ public class Musteri {
 		LinkedList<Object> list = new LinkedList<>();
 
 		dosyaOkuma("Masalar.txt");
-		System.out.print("-Sipari� girilecek masa numaras�: ");
+		System.out.print("-Siparis girilecek masa numarasi: ");
 		int masaNumarasi = scan.nextInt();
 		int siparis;
 		while (true) {
 			System.out.println("1: ICECEKLER\n2: TATLILAR\n3: ARA SICAKLAR\n4: ANA YEMEKLER");
-			System.out.print("-Se�iminiz:");
+			System.out.print("-Seciminiz:");
 
 			int secim = scan.nextInt();
 			switch (secim) {
 			case 1:
 				dosyaOkuma("Icecekler.txt");
-				System.out.print("Sipari� numaran�z: ");
+				System.out.print("Siparis numaraniz: ");
 				siparis = scan.nextInt();
 				list.add(iceceklerOkuma(siparis));
 				break;
 			case 2:
 				dosyaOkuma("Tatlilar.txt");
-				System.out.print("Sipari� numaran�z: ");
+				System.out.print("Siparis numaraniz: ");
 				siparis = scan.nextInt();
 				list.add(tatlilarOkuma(siparis));
 				break;
 			case 3:
 				dosyaOkuma("AraSicaklar.txt");
-				System.out.print("Sipari� numaran�z: ");
+				System.out.print("Siparis numaraniz: ");
 				siparis = scan.nextInt();
 				list.add(araSicaklarOkuma(siparis));
 				break;
 			case 4:
 				dosyaOkuma("AnaYemekler.txt");
-				System.out.print("Sipari� numaran�z: ");
+				System.out.print("Siparis numaraniz: ");
 				siparis = scan.nextInt();
 				list.add(anaYemeklerOkuma(siparis));
 				break;
 			default:
-				System.out.println("Hatal� se�im yapt�n�z!");
+				System.out.println("Hatali secim yaptiniz!");
 				break;
 			}
-			System.out.print("Sipari� almaya devam etmek istiyor musunuz?(e/h): ");
+			System.out.print("Siparis almaya devam etmek istiyor musunuz?(e/h): ");
 			String eh = scan.next();
 			if (eh.equals("e")) {
 				continue;
@@ -208,13 +208,13 @@ public class Musteri {
 		LinkedList<Object> list = new LinkedList<>();
 
 		dosyaOkuma("Masalar.txt");
-		System.out.print("�demesi yap�lcak masa numaras� giriniz: ");
+		System.out.print("Odemesi yapilcak masa numarasi giriniz: ");
 		int masaNumarasi = scan.nextInt();
 
 		String masam = masaBul(masaNumarasi);
 		File file = new File("Musteri\\".concat(masam) + ".txt");
 		if (!file.exists()) {
-			System.out.println("Bu masada sipari� yok!!");
+			System.out.println("Bu masada siparis yok!!");
 		} else {
 			BufferedReader bReader = new BufferedReader(
 					new FileReader("Musteri\\".concat(masam) + ".txt"));
@@ -247,7 +247,7 @@ public class Musteri {
 				kalori[i] = Double.parseDouble(bolme[5]);
 				toplamKalori += kalori[i];
 			}
-			System.out.println("�denecek Tutar = " + toplamFiyat);
+			System.out.println("Odenecek Tutar = " + toplamFiyat);
 			System.out.println("Toplam Maliyet = " + toplamMaliyet);
 			System.out.println("Toplam Kalori = " + toplamKalori);
 			double kar = toplamFiyat - toplamMaliyet;
@@ -257,83 +257,83 @@ public class Musteri {
 			dosyaYazma("Satis.txt", String.valueOf(toplamFiyat));
 			dosyaYazma("Kar.txt", String.valueOf(kar));
 
-			System.out.print("�deme yapmak i�in 1 tu�una bas�n�n�z: ");
+			System.out.print("Odeme yapmak icin 1 tusuna basininiz: ");
 			int odemeTusu = scan.nextInt();
 			if (odemeTusu == 1) {
 				dosyaSilme("Musteri\\".concat(masam) + ".txt");
-				System.out.println("�deme yap�ld�.");
+				System.out.println("Odeme yapildi.");
 			} else {
-				System.out.println("�deme yap�lamad�.");
+				System.out.println("Odeme yapilamadi.");
 			}
 		}
 	}
 
 	public void musteriKontrol() throws IOException {
 		Menu menu = new Menu();
-		System.out.println("1: MASALAR\n2: S�PAR��\n3: �DEME\n0: GER�");
-		System.out.print("--Yapmak istedi�iniz i�lemi se�iniz:");
+		System.out.println("1: MASALAR\n2: SIPARIS\n3: ODEME\n0: GERI");
+		System.out.print("--Yapmak istediginiz islemi seciniz:");
 		int islem = scan.nextInt();
 		switch (islem) {
 		case 1:
-			System.out.println("1: MASA EKLEME\n2: MASALARI G�STERME\n0: GER�");
-			System.out.print("Se�iminiz:");
+			System.out.println("1: MASA EKLEME\n2: MASALARI GOSTERME\n0: GERI");
+			System.out.print("Seciminiz:");
 			int secim = scan.nextInt();
 			if (secim == 1) {
 				masaEkleme();
-				System.out.print("Geri gitmek i�in 0 giriniz:");
+				System.out.print("Geri gitmek icin 0 giriniz:");
 				secim = scan.nextInt();
 				if (secim == 0) {
 					musteriKontrol();
 				} else {
-					System.out.println("Hatal� giri� yapt�n�z!");
+					System.out.println("Hatali giris yaptiniz!");
 				}
 			} else if (secim == 2) {
 				masaGosterme();
-				System.out.print("Geri gitmek i�in 0 giriniz:");
+				System.out.print("Geri gitmek icin 0 giriniz:");
 				secim = scan.nextInt();
 				if (secim == 0) {
 					musteriKontrol();
 				} else {
-					System.out.println("Hatal� giri� yapt�n�z!");
+					System.out.println("Hatali giris yaptiniz!");
 				}
 			} else if (secim == 0) {
 				musteriKontrol();
-				System.out.print("Geri gitmek i�in 0 giriniz:");
+				System.out.print("Geri gitmek icin 0 giriniz:");
 				secim = scan.nextInt();
 				if (secim == 0) {
 					musteriKontrol();
 				} else {
-					System.out.println("Hatal� giri� yapt�n�z!");
+					System.out.println("Hatali giris yaptiniz");
 				}
 			} else {
-				System.out.println("Hatal� giri�!");
+				System.out.println("Hatali giris!");
 			}
 			break;
 		case 2:
 			siparis();
-			System.out.print("Geri gitmek i�in 0 giriniz:");
+			System.out.print("Geri gitmek icin 0 giriniz:");
 			secim = scan.nextInt();
 			if (secim == 0) {
 				musteriKontrol();
 			} else {
-				System.out.println("Hatal� giri� yapt�n�z!");
+				System.out.println("Hatali giris yaptiniz!");
 			}
 			break;
 		case 3:
 			odeme();
-			System.out.print("Geri gitmek i�in 0 giriniz:");
+			System.out.print("Geri gitmek icin 0 giriniz:");
 			secim = scan.nextInt();
 			if (secim == 0) {
 				musteriKontrol();
 			} else {
-				System.out.println("Hatal� giri� yapt�n�z!");
+				System.out.println("Hatali giris yaptiniz!");
 			}
 			break;
 		case 0:
 			menu.Kontrol();
 			break;
 		default:
-			System.out.println("Hatal� se�im yapt�n�z!");
+			System.out.println("Hatali giris yaptiniz!");
 			break;
 		}
 	}
