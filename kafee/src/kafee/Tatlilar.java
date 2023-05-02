@@ -65,16 +65,16 @@ public class Tatlilar {
 
 		listeOlusturma();
 
-		System.out.println("--Eklemek istedi�iniz �r�n�n--");
-		System.out.print("Ad�:");
+		System.out.println("--Eklemek istediginiz urunun--");
+		System.out.print("Adi:");
 		String tatliAdi = scan.next();
-		System.out.print("Fiyat�:");
+		System.out.print("Fiyati:");
 		double tatliFiyati = scan.nextDouble();
 		System.out.print("Maliyeti:");
 		double tatliMaliyeti = scan.nextDouble();
 		System.out.print("Kalorisi:");
 		double tatliKalorisi = scan.nextDouble();
-		System.out.println("�r�n eklendi.");
+		System.out.println("Urun eklendi.");
 
 		dosyaYazma("Tatlilar.txt",
 				tatliAdi + " " + tatliFiyati + " TL " + tatliMaliyeti + " TL " + tatliKalorisi + " kalori");
@@ -151,12 +151,12 @@ public class Tatlilar {
 			e.printStackTrace();
 		}
 
-		System.out.print("G�ncellemek istedi�iniz �r�n�n id'sini giriniz:");
+		System.out.print("Guncellemek istediginiz urunun id'sini giriniz:");
 		int urunId = scan.nextInt();
-		System.out.println("--G�ncelledi�iniz �r�n�n--");
-		System.out.print("Ad�:");
+		System.out.println("--Guncelledi�iniz urunun--");
+		System.out.print("Adi:");
 		String ad = scan.next();
-		System.out.print("Fiyat�:");
+		System.out.print("Fiyati:");
 		double fiyat = scan.nextDouble();
 		System.out.print("Maliyeti:");
 		double maliyet = scan.nextDouble();
@@ -176,9 +176,9 @@ public class Tatlilar {
 		SimpleDateFormat sekil = new SimpleDateFormat();
 		Date tarih = new Date();
 		dosyaYazma("log.txt", sekil.format(tarih) + " tarihinde " + eskiData[0] + " --> " + list.get(urunId - 1)
-				+ " seklinde g�ncellendi.");
+				+ " seklinde guncellendi.");
 		dosyaYazma("MenuLog.txt", sekil.format(tarih) + " tarihinde "
-				+ eskiData[0] + " --> " + list.get(urunId - 1) + " seklinde g�ncellendi.");
+				+ eskiData[0] + " --> " + list.get(urunId - 1) + " seklinde guncellendi.");
 
 		File file2 = new File("Tatlilar.txt");
 		if (file2.exists()) {
@@ -205,13 +205,13 @@ public class Tatlilar {
 	public void tatlilarKontrol() throws IOException {
 		Menu menu = new Menu();
 
-		System.out.println("1: EKLE\n2: S�L\n3: G�NCELLE\n0: GER�");
-		System.out.print("--Yapmak istedi�iniz i�lemi se�iniz:");
+		System.out.println("1: EKLE\n2: SIL\n3: GuNCELLE\n0: GERI");
+		System.out.print("--Yapmak istediginiz islemi seciniz:");
 		int islem = scan.nextInt();
 		switch (islem) {
 		case 1:
 			ekle();
-			System.out.println("Geri gitmek i�in 0 giriniz:");
+			System.out.println("Geri gitmek icin 0 giriniz:");
 			int secim = scan.nextInt();
 			if (secim == 0) {
 				tatlilarKontrol();
@@ -219,10 +219,10 @@ public class Tatlilar {
 			break;
 		case 2:
 			dosyaOkuma("Tatlilar.txt");
-			System.out.print("-Silmek istedi�iniz �r�n�n id'sini giriniz:");
+			System.out.print("-Silmek istediginiz urunun id'sini giriniz:");
 			int id = scan.nextInt();
 			sil("Tatlilar.txt", id);
-			System.out.print("Geri gitmek i�in 0 giriniz:");
+			System.out.print("Geri gitmek icin 0 giriniz:");
 			secim = scan.nextInt();
 			if (secim == 0) {
 				tatlilarKontrol();
@@ -230,7 +230,7 @@ public class Tatlilar {
 			break;
 		case 3:
 			guncelle();
-			System.out.print("Geri gitmek i�in 0 giriniz:");
+			System.out.print("Geri gitmek icin 0 giriniz:");
 			secim = scan.nextInt();
 			if (secim == 0) {
 				tatlilarKontrol();
@@ -240,7 +240,7 @@ public class Tatlilar {
 			menu.menuKontrol();
 			break;
 		default:
-			System.out.println("Hatal� se�im yapt�n�z!");
+			System.out.println("Hatali secim yaptiniz!");
 			break;
 		}
 	}
